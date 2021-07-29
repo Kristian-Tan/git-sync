@@ -1,0 +1,4 @@
+git clone --depth 1 https://github.com/Kristian-Tan/git-sync.git
+cd git-sync
+sudo bash uninstall.sh
+rm -rf ../git-sync
