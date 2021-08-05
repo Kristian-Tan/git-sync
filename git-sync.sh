@@ -61,6 +61,7 @@ if [ "$mode" = "worktree" ]; then
         echo 1>&2 "Could not read $worktree_target/.git, is this a worktree?"
         exit 1
     fi
+    cd "$worktree_target"
     repository_target="${repository_target/gitdir: /}"
     repository_target=`readlink -f "$repository_target"`
     worktree_link_content=$repository_target
