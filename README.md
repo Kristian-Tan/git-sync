@@ -55,6 +55,12 @@ sudo bash install.sh
 - just remove copied files (or just use uninstall.sh script: ```git clone https://github.com/Kristian-Tan/git-sync.git ; sudo bash git-sync/uninstall.sh```)
 - or another one-line: ```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Kristian-Tan/git-sync/HEAD/remove)"```
 
+#### Update
+
+- just uninstall and then install again
+- or use update.sh script: ```git clone https://github.com/Kristian-Tan/git-sync.git ; sudo bash git-sync/update.sh```
+- or another one-line: ```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Kristian-Tan/git-sync/HEAD/upgrade)"```
+
 ## Contributing
 
 - Feel free to create issue, pull request, etc if there's anything that can be improved
