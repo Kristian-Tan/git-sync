@@ -17,11 +17,13 @@
   - `-m mode` = "worktree" or "checkout"
   - `-t method` = "rebase" or "merge"
   - `-o options` = for merge methods: "--ff-only", "--ff", "--no-ff", for rebase methods: none
+  - `-a after` = for command to be executed after git-sync (e.g.: set in .bashrc `GIT_SYNC_AFTER='git push --force'`)
 - will read from command line arguments, if not found then read from environment variable
   - `GIT_SYNC_BRANCH_TARGET` (default "master"),
   - `GIT_SYNC_MODE` (default "worktree"),
   - `GIT_SYNC_METHOD` (default "rebase"),
   - `GIT_SYNC_OPTIONS` (default "")
+  - `GIT_SYNC_AFTER` (default "")
 
 ## Installation
 

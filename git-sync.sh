@@ -17,28 +17,32 @@ branch_target="master"
 mode="worktree"
 method="rebase"
 options=""
+after=""
 
 # MyVar="${DEPLOY_ENV:-default_value}"
 branch_target="${GIT_SYNC_BRANCH_TARGET:-$branch_target}"
 mode="${GIT_SYNC_MODE:-worktree}"
 method="${GIT_SYNC_METHOD:-rebase}"
 options="${GIT_SYNC_OPTIONS:-}"
+after="${GIT_SYNC_AFTER:-}"
 
 # read arguments from getopts https://wiki.bash-hackers.org/howto/getopts_tutorial https://stackoverflow.com/a/14203146/3706717
 while getopts "hb:m:t:o:" opt; do
     case "$opt" in
     h)
         cat << EOF
-usage: [-b branch_target] [-m mode] [-t rebase]
+usage: [-b branch_target] [-m mode] [-t rebase] [-a after]
   -b branch_target = name of main/master/base branch
   -m mode = "worktree" or "checkout"
   -t method = "rebase" or "merge"
   -o options = for merge methods: "--ff-only", "--ff", "--no-ff", for rebase methods: none
+  -a after = command to be run after git-sync exits
 will read from command line arguments, if not found then read from environment variable
   GIT_SYNC_BRANCH_TARGET (default "master"),
   GIT_SYNC_MODE (default "worktree"),
   GIT_SYNC_METHOD (default "rebase"),
   GIT_SYNC_OPTIONS (default "")
+  GIT_SYNC_AFTER (default "")
 EOF
 #-a anchor_relative = make the created worktree linked by relative path instead of absolute one, option anchor_relative must be set to a directory name to be used in anchoring them (if not set, default absolute path worktree will be used)
         exit 0
@@ -50,6 +54,8 @@ EOF
     t)  method=$OPTARG
         ;;
     o)  options=$OPTARG
+        ;;
+    a)  after=$OPTARG
         ;;
     esac
 done
@@ -85,3 +91,5 @@ elif  [ "$mode" = "merge" ]; then
     git $method $branch_target $options
 
 fi
+
+$after
