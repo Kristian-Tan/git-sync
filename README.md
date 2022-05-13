@@ -17,7 +17,8 @@
   - `-m mode` = "worktree" or "checkout"
   - `-t method` = "rebase" or "merge"
   - `-o options` = for merge methods: "--ff-only", "--ff", "--no-ff", for rebase methods: none
-  - `-a after` = for command to be executed after git-sync (e.g.: set in .bashrc `GIT_SYNC_AFTER='git push --force'`)
+  - `-a before` = for command to be executed before git-sync (e.g.: set in .bashrc `GIT_SYNC_BEFORE='git stash'`)
+  - `-a after` = for command to be executed after git-sync (e.g.: set in .bashrc `GIT_SYNC_AFTER='git stash pop ; git push --force'`)
 - will read from command line arguments, if not found then read from environment variable
   - `GIT_SYNC_BRANCH_TARGET` (default "master"),
   - `GIT_SYNC_MODE` (default "worktree"),
